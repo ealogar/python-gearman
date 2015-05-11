@@ -3,6 +3,7 @@ import logging
 import socket
 import struct
 import time
+import six
 
 from gearman.errors import ConnectionError, ProtocolError, ServerUnavailable
 from gearman.constants import DEFAULT_GEARMAN_PORT, _DEBUG_MODE_
@@ -48,8 +49,8 @@ class GearmanConnection(object):
         self._is_server_side = None
 
         # Reset all our raw data buffers
-        self._incoming_buffer = b''
-        self._outgoing_buffer = b''
+        self._incoming_buffer = six.b('')
+        self._outgoing_buffer = six.b('')
 
         # Toss all commands we may have sent or received
         self._incoming_commands = collections.deque()
@@ -189,7 +190,7 @@ class GearmanConnection(object):
             packed_command = self._pack_command(cmd_type, cmd_args)
             packed_data.append(packed_command)
 
-        self._outgoing_buffer = b''.join(packed_data)
+        self._outgoing_buffer = six.b('').join(packed_data)
 
     def send_data_to_socket(self):
         """Send data from buffer -> socket

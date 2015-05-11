@@ -2,6 +2,7 @@ import logging
 import select as select_lib
 
 import gearman.util
+import six
 from gearman.connection import GearmanConnection
 from gearman.constants import _DEBUG_MODE_
 from gearman.errors import ConnectionError, ServerUnavailable
@@ -23,7 +24,7 @@ class NoopEncoder(DataEncoder):
     """Provide common object dumps for all communications over gearman"""
     @classmethod
     def _enforce_byte_string(cls, given_object):
-        if type(given_object) != bytes:
+        if type(given_object) != six.binary_type:
             raise TypeError("Expecting bytes, got %r" % type(given_object))
 
     @classmethod
