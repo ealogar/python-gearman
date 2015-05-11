@@ -2,11 +2,10 @@
 
 from setuptools import setup
 
-from gearman import __version__ as version
 
 setup(
     name = 'gearman',
-    version = version,
+    version = '2.0.4',
     author = 'Matthew Tai',
     author_email = 'mtai@yelp.com',
     description = 'Gearman API - Client, worker, and admin client interfaces',
@@ -26,6 +25,7 @@ setup(
         'Programming Language :: Python :: 2.5',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.4',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
 )
